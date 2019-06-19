@@ -115,3 +115,42 @@ function BFS(s, G, cor, fila, pi, d, estadoCor) {
         matrizEstado.push([cor.slice(), pi.slice(), d.slice(), fila.slice(), estadoCor.slice()])
     }
 }
+
+function dijkstra(s){
+    let G = makeListaAdj()
+
+    let distancia = []
+    let antacessesor = []
+    let Q = []
+    
+    for(let i = 0; i< G.length; i++){
+        distancia[i]=1000
+        antacessesor[i]=0
+
+    }
+    distancia[s]=0
+    antacessesor[s]=null
+    Q.push(s)
+
+    while (Q.length != 0){
+        let u = Q.pop()
+        for(let i = 0; i<G[u].length;i++){
+            //console.log(G[u][i][1])
+            if(distancia[G[u][i][0]] > distancia[u] + G[u][i][1]){
+                distancia[G[u][i][0]] =  distancia[u] + G[u][i][1]
+                antacessesor[G[u][i][0]] = u
+                Q.push(G[u][i][0])
+            }
+        }
+    }
+    console.log(distancia, antacessesor)
+
+    for(let i = 0; i < antacessesor.length; i++){
+        if (cy.$("#" + String(i) + String(antacessesor[i])).length == 1){
+            cy.$("#" + String(i) + String(antacessesor[i])).style({ "line-color": "#00CED1" })
+        }else{
+            cy.$("#" + String(antacessesor[i]) + String(i)).style({ "line-color": "#00CED1" })
+        }
+    }
+
+}

@@ -16,7 +16,7 @@ let cy = cytoscape({
         {
             selector: 'node',
             style: {
-                'background-color': '#666',
+                'background-color': '#008080',
                 'label': 'data(id)'
             }
         },
@@ -30,7 +30,7 @@ let cy = cytoscape({
                 "curve-style": "bezier",
                 'text-background-opacity': 1,
                 'text-background-color': '#ffffff',
-                'text-background-shape': 'rectangle',
+                'text-background-shape': 'roundrectangle',
                 'text-border-radius': '50%'
             }
         }
@@ -114,7 +114,7 @@ function makeListaAdj() {
         let source = parseInt(arestaDaTela.source().data('id'))
         let target = parseInt(arestaDaTela.target().data('id'))
         let valorPeso =parseFloat( arestaDaTela.style('label'))
-        console.log(valorPeso)
+        //console.log(valorPeso)
         if (G[source] == undefined)
             G[source] = []
         G[source].push([target, valorPeso])
@@ -127,7 +127,7 @@ function makeListaAdj() {
         element.sort()
     })
 
-console.log(G);
+//console.log(G);
 
 
     return G
