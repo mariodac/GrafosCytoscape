@@ -144,6 +144,20 @@ function dijkstra(s){
         }
     }
     console.log(distancia, antacessesor)
+    let table = document.getElementById('tableDijkstra')
+    table.innerHTML = ''
+    
+    for (let index = 0; index < distancia.length; index++) {
+        if(antacessesor[index] === null){
+            antacessesor[index] = 'ORIGEM'
+        }
+        let linha = '<tr><td>' + index + '</td><td>' + distancia[index] + '</td><td>' + antacessesor[index] + '</td></tr>'
+        table.insertAdjacentHTML('beforeend', linha)
+    }
+    
+    document.getElementById('table1').style.display = 'none'
+    document.getElementById('table2').style.display = 'none'
+    document.getElementById('table3').style.display = 'block'
 
     for(let i = 0; i < antacessesor.length; i++){
         if (cy.$("#" + String(i) + String(antacessesor[i])).length == 1){

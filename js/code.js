@@ -31,7 +31,6 @@ let cy = cytoscape({
                 'text-background-opacity': 1,
                 'text-background-color': '#ffffff',
                 'text-background-shape': 'roundrectangle',
-                'text-border-radius': '50%'
             }
         }
     ],
