@@ -118,7 +118,8 @@ function BFS(s, G, cor, fila, pi, d, estadoCor) {
 
 function dijkstra(s){
     let G = makeListaAdj()
-
+    let table = document.getElementById('tableDijkstra')
+    table.innerHTML = ''
     let distancia = []
     let antacessesor = []
     let Q = []
@@ -134,6 +135,11 @@ function dijkstra(s){
 
     while (Q.length != 0){
         let u = Q.pop()
+        if(G[u] === undefined){
+            console.log("undefined")
+            document.getElementById('table3').innerHTML = "<strong><p>VERTICE INEXISTENTE</strong></p>"
+            document.getElementById('table3').style.display = 'block'
+        }
         for(let i = 0; i<G[u].length;i++){
             //console.log(G[u][i][1])
             if(distancia[G[u][i][0]] > distancia[u] + G[u][i][1]){
@@ -144,12 +150,15 @@ function dijkstra(s){
         }
     }
     console.log(distancia, antacessesor)
-    let table = document.getElementById('tableDijkstra')
-    table.innerHTML = ''
+    
     
     for (let index = 0; index < distancia.length; index++) {
         if(antacessesor[index] === null){
             antacessesor[index] = 'ORIGEM'
+        }
+        if(distancia[index] === 1000){
+            distancia[index] = 'INALCANÇÁVEL'
+            antacessesor[index] = 'INALCANÇÁVEL'
         }
         let linha = '<tr><td>' + index + '</td><td>' + distancia[index] + '</td><td>' + antacessesor[index] + '</td></tr>'
         table.insertAdjacentHTML('beforeend', linha)
