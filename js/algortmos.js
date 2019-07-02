@@ -120,6 +120,7 @@ function dijkstra(s){
     let G = makeListaAdj()
     let table = document.getElementById('tableDijkstra')
     table.innerHTML = ''
+    let inexistente = false
     let distancia = []
     let antacessesor = []
     let Q = []
@@ -138,8 +139,12 @@ function dijkstra(s){
         if(G[u] === undefined){
             console.log("undefined")
             table.innerHTML = ''
-            document.getElementById('tableDijkstra').innerHTML = "<strong><p>VERTICE INEXISTENTE</strong></p>"
-            document.getElementById('tabltableDijkstrae3').style.display = 'block'
+            // document.getElementById('tableDijkstra').innerHTML = "<strong><p>VERTICE INEXISTENTE</strong></p>"
+            document.getElementById('table1').style.display = 'none'
+            document.getElementById('table2').style.display = 'none'
+            document.getElementById('table3').style.display = 'none'
+            document.getElementById('inexistente').style.display = 'block'
+            inexistente =true
             break
         }
         for(let i = 0; i<G[u].length;i++){
@@ -164,10 +169,12 @@ function dijkstra(s){
         let linha = '<tr><td>' + index + '</td><td>' + distancia[index] + '</td><td>' + antacessesor[index] + '</td></tr>'
         table.insertAdjacentHTML('beforeend', linha)
     }
-    
-    document.getElementById('table1').style.display = 'none'
-    document.getElementById('table2').style.display = 'none'
-    document.getElementById('table3').style.display = 'block'
+    if(inexistente != true){
+        document.getElementById('inexistente').style.display = 'none'
+        document.getElementById('table1').style.display = 'none'
+        document.getElementById('table2').style.display = 'none'
+        document.getElementById('table3').style.display = 'block'
+    }
 
     for(let i = 0; i < antacessesor.length; i++){
         if (cy.$("#" + String(i) + String(antacessesor[i])).length == 1){

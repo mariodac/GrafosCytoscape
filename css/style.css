@@ -19,3 +19,8 @@
 .DIJKSTRA_table{
     display: none;
 }
+
+.inexistente{
+    display: none;
+    color: crimson;
+}
