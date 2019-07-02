@@ -124,7 +124,7 @@ function dijkstra(s){
     let distancia = []
     let antacessesor = []
     let Q = []
-    
+    //INICIALIZAÇÃO
     for(let i = 0; i< G.length; i++){
         distancia[i]=1000
         antacessesor[i]=0
@@ -133,7 +133,7 @@ function dijkstra(s){
     distancia[s]=0
     antacessesor[s]=null
     Q.push(s)
-
+    //RELAXAMENTO
     while (Q.length != 0){
         let u = Q.pop()
         if(G[u] === undefined){

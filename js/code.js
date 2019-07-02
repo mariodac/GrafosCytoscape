@@ -8,7 +8,9 @@ let isNotDirected = true
 let idModify = ''
 let ant = ''
 let antRemove = ''
-let cy = cytoscape({
+let peso
+let botaoAdicionarPeso = document.getElementById('botaoAdicionarPeso')
+let cy = window.cy =  cytoscape({
     container: document.getElementById('cy'),
 
     elements: [],
@@ -70,7 +72,7 @@ cy.on('tap', 'node', function (evt) {
         cy.add({
             group: 'edges',
             data: { id: String(ant) + String(node.id()), source: String(ant), target: String(node.id()) }, 
-			style:{label: Math.floor((Math.random() * 10) + 1)}
+			style:{label: peso || Math.floor((Math.random() * 10) + 1)}
         })
         nodeLink = false
         tapNode = true
@@ -81,6 +83,17 @@ cy.on('tap', 'node', function (evt) {
         tapNode = false
     }
 })
+
+function setPeso(){
+    if(!botaoAdicionarPeso.onclick){
+        peso = Math.floor((Math.random() * 10) + 1)
+    }
+    return peso
+}
+
+botaoAdicionarPeso.addEventListener("click", evt => {
+    peso = document.getElementById("peso").value;
+  });
 
 cy.on('tap', 'edge', function (evt) {
     displayOptionsNodeOff(false)
