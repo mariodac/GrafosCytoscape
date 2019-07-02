@@ -137,8 +137,10 @@ function dijkstra(s){
         let u = Q.pop()
         if(G[u] === undefined){
             console.log("undefined")
-            document.getElementById('table3').innerHTML = "<strong><p>VERTICE INEXISTENTE</strong></p>"
-            document.getElementById('table3').style.display = 'block'
+            table.innerHTML = ''
+            document.getElementById('tableDijkstra').innerHTML = "<strong><p>VERTICE INEXISTENTE</strong></p>"
+            document.getElementById('tabltableDijkstrae3').style.display = 'block'
+            break
         }
         for(let i = 0; i<G[u].length;i++){
             //console.log(G[u][i][1])
@@ -150,7 +152,6 @@ function dijkstra(s){
         }
     }
     console.log(distancia, antacessesor)
-    
     
     for (let index = 0; index < distancia.length; index++) {
         if(antacessesor[index] === null){
